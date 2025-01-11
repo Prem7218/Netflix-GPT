@@ -15,8 +15,10 @@
 - Create Redux Store & Slice
 - Implement SignOut
 - Update Profile's
-
-
+- BugFix's: Sign up then view User's Profile Picture & DisplayName
+- bugFix's: if Login / Sign Up / Sign In then Redirect to "browse" else if not then not directly go to "browse".
+- Unsubscribe: the onAuthStaged Authentication when signout.
+- URL FILE: Add all hard coded URL in this and export & use.
 
 
 # Feature's: 

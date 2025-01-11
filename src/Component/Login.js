@@ -3,12 +3,11 @@ import Header from "./Header";
 import validation from '../utils/validation';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/Slices/userSlice';
+import { BANNER, USERICON } from '../utils/url';
 
 const Login = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [signInForm, setSignInForm] = useState(true);
   const [validMessage, setValidMessage] = useState(null);
@@ -29,13 +28,11 @@ const Login = () => {
         const user = userCredential.user;
 // When Go to Modify the Browse Page:
         updateProfile(auth.currentUser, {
-          displayName: name.current.value, photoURL: `https://avatars.githubusercontent.com/u/161498035?v=4`
+          displayName: name.current.value, photoURL: USERICON
         }).then(() => {
 
           const {uid, email, displayName, photoURL} = auth.currentUser;
           dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
-
-          navigate("/browse");
         }).catch((error) => {
           setValidMessage(error.message);
         });
@@ -51,7 +48,6 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        navigate("/browse");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -69,7 +65,7 @@ const Login = () => {
       <Header />
       
       <div className='absolute w-screen h-screen'>
-        <img alt='netflix-banner' src='https://assets.nflxext.com/ffe/siteui/vlv3/2f5a878d-bbce-451b-836a-398227a34fbf/web/IN-en-20241230-TRIFECTA-perspective_5ab944a5-1a71-4f6d-b341-8699d0491edd_large.jpg' />
+        <img alt='netflix-banner' src={BANNER} />
       </div>
 
       <form 
