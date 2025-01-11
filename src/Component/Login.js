@@ -69,7 +69,7 @@ const Login = () => {
       </div>
 
       <form 
-          className="rounded-md bg-opacity-80 absolute p-12 w-[450px] bg-black mt-28 mx-auto right-0 left-0 text-white" 
+          className="rounded-md bg-opacity-80 absolute p-12 w-[450px] bg-black mt-24 mx-auto right-0 left-0 text-white" 
           style={{maxHeight: signInForm ? "46rem" : "40rem"}}
           onSubmit={(e) => e.preventDefault()} // Prevent default form submission for now
       >
