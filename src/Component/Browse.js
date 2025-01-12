@@ -6,11 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useFetchMovieData } from "../Custom_Hooks/useFetchMovieData";
 import MainComponent from "./MoviesData/MainComponent";
+import SecondData from "./ScondPartMovieList/SecondData";
 
 const Browse = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const movieData = useFetchMovieData();
+  if(!movieData) return null;
 
   const handleSignOut = () => {
     signOut(auth)
@@ -41,6 +43,7 @@ const Browse = () => {
       </div>
 
       <MainComponent />
+      <SecondData />
     </>
   );
 };

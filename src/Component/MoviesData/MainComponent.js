@@ -1,19 +1,32 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import VideoBackground from './VideoBackground';
-import VideoData from './VideoData';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import VideoBackground from "./VideoBackground";
+import VideoData from "./VideoData";
+import { removeSelectIndex } from "../../utils/Slices/useMoviesSlice";
 
 const MainComponent = () => {
+  const dispatch = useDispatch();
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
+  const selectedIndexs = useSelector(
+    (store) => store.movies?.nowNextVideoTrailerList
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   if (!movies) return null;
 
   const currentMovie = movies[currentIndex];
   const { original_title, overview, id } = currentMovie;
 
-  // Auto-switch to the next movie trailer
   const handleNextMovie = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % movies.length);
+    if (selectedIndexs && selectedIndexs.length > 0) {
+      setCurrentIndex(selectedIndexs[0]);
+      dispatch(removeSelectIndex());
+    } 
+    else if(currentIndex+1 >= movies.length) {
+      setCurrentIndex(0);
+    } 
+    else {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % movies.length);
+    }
   };
 
   return (
@@ -27,7 +40,6 @@ const MainComponent = () => {
 };
 
 export default MainComponent;
-
 
 // Updated Version:
 
