@@ -19,6 +19,8 @@
 - bugFix's: if Login / Sign Up / Sign In then Redirect to "browse" else if not then not directly go to "browse".
 - Unsubscribe: the onAuthStaged Authentication when signout.
 - URL FILE: Add all hard coded URL in this and export & use.
+- Register for TMDB API Using (Opera ---> On VPN) --> use https://thingproxy.freeboard.io/fetch/{your_movies_link}
+
 
 
 # Feature's: 
