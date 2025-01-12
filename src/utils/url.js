@@ -9,7 +9,7 @@ export const USERICON = "https://avatars.githubusercontent.com/u/161498035?v=4";
 
 export const options = {
   method: "GET",
-  url: "https://thingproxy.freeboard.io/fetch/https://api.themoviedb.org/3/movie/now_playing" || "https://thingproxy.freeboard.io/fetch/https://api.themoviedb.org/3/movie/movie_id/videos",
+  url: "https://cors-anywhere.herokuapp.com/https://api.themoviedb.org/3/movie/now_playing",
   params: { language: "en-US", page: "1" },
   headers: {
     accept: "application/json",
