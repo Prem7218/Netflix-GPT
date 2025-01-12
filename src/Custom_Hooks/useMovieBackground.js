@@ -13,7 +13,7 @@ export const useMovieBackground = (id) => {
       try {
         const { data } = await axios.request({
           ...options,
-          url: `https://thingproxy.freeboard.io/fetch/https://api.themoviedb.org/3/movie/${id}/videos`,
+          url: `https://cors-anywhere.herokuapp.com/https://api.themoviedb.org/3/movie/${id}/videos`,
         });
 
         const trailerVideos = data?.results.filter(
