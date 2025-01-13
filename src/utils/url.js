@@ -9,9 +9,11 @@ export const USERICON = "https://avatars.githubusercontent.com/u/161498035?v=4";
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 
+export let movieURLs = "https://cors-anywhere.herokuapp.com/https://api.themoviedb.org/3/movie/";
+
 export const options = {
   method: "GET",
-  url: "https://cors-anywhere.herokuapp.com/https://api.themoviedb.org/3/movie/now_playing",
+  url: movieURLs,
   params: { language: "en-US", page: "1" },
   headers: {
     accept: "application/json",

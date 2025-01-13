@@ -19,7 +19,8 @@
 - bugFix's: if Login / Sign Up / Sign In then Redirect to "browse" else if not then not directly go to "browse".
 - Unsubscribe: the onAuthStaged Authentication when signout.
 - URL FILE: Add all hard coded URL in this and export & use.
-- Register for TMDB API Using (Opera ---> On VPN) --> use https://thingproxy.freeboard.io/fetch/{your_movies_link}
+- Register for TMDB API Using (Opera ---> On VPN) --> use 
+   1) https://thingproxy.freeboard.io/fetch/{your_movies_link} OR (2) https://cors-anywhere.herokuapp.com/{your_movies_link} 
 - Create Custom Hook's to get Movie's, trailer.
 - Create Redux Store & Slices to get safe all movie's, & trailer's.
 - Devide The Browser in 3 part's headerComponent, mainComponent, secondaryComponent.
@@ -29,6 +30,8 @@
 - Use Tailwind Class to get look awsome.
 - add 2 new reducer function for add selection & remove movieIndex By User.  
 - Implement Feature to get Select Want Movie Trailer and Run As User/Our Wish.
+- fetch new Movie's List [ now_playing, popular, upcoming, top_rated ] & add this in Reduc Store.
+- Update Movie Slicde add some new reducer function to add diff List by diff one & in diff space. 
 
 # Feature's: 
 @@@ Login / Sing up

@@ -11,8 +11,11 @@ import SecondData from "./ScondPartMovieList/SecondData";
 const Browse = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
-  const movieData = useFetchMovieData();
-  if(!movieData) return null;
+  const movieData       = useFetchMovieData("now_playing");
+  const moviePopularMov = useFetchMovieData("popular");
+  const movieTopMov     = useFetchMovieData("top_rated");
+  const movieUpcMov     = useFetchMovieData("upcoming");
+  if(!movieData || !moviePopularMov || !movieTopMov || !movieUpcMov) return null;
 
   const handleSignOut = () => {
     signOut(auth)
