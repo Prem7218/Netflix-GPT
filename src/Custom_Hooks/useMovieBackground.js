@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { options } from "../utils/url";
+import { movieURLs, options } from "../utils/url";
 import { useDispatch } from "react-redux";
 import { addTrailerVideo } from "../utils/Slices/useMoviesSlice";
 
@@ -13,7 +13,7 @@ export const useMovieBackground = (id) => {
       try {
         const { data } = await axios.request({
           ...options,
-          url: `https://cors-anywhere.herokuapp.com/https://api.themoviedb.org/3/movie/${id}/videos`,
+          url: `${movieURLs}${id}/videos`,
         });
 
         const trailerVideos = data?.results.filter(

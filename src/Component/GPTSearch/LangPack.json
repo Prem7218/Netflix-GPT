@@ -1,0 +1,23 @@
+{
+    "lang": [   
+        {     
+            "langCode"   : "en", 
+            "lang"       : "English",
+            "search"     : "Search",
+            "placeholder": "Search Your Favorite Movie"
+        },
+        {
+            "langCode"   : "mr", 
+            "lang"       : "Marathi",
+            "search"     : "शोध",
+            "placeholder": "आपला आवडता चित्रपट शोधा"
+        },
+        {
+            "langCode"   : "hi",
+            "lang"       : "Hindi",
+            "search"     : "खोज",
+            "placeholder": "अपनी पसंदीदा मूवी खोजें"
+        }
+
+    ]
+}

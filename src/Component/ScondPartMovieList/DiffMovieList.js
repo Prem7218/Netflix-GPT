@@ -37,9 +37,9 @@ import { IMG_CDN_URL } from '../../utils/url';
         if (!movieList || movieList.length === 0) return null;
 
         return (
-          <div key={index} className="mb-8">
+          <div key={index} className="mb-6">
             {/* Category Header */}
-            <h1 className="px-8 py-4 text-3xl font-bold bg-gradient-to-r from-purple-500 to-pink-600 text-transparent bg-clip-text">
+            <h1 className="px-8 pb-4 text-3xl font-bold bg-gradient-to-r from-purple-500 to-pink-600 text-transparent bg-clip-text">
               {title}
             </h1>
 
@@ -47,7 +47,7 @@ import { IMG_CDN_URL } from '../../utils/url';
             <div
               className={`flex ${
                 layout === "vertical"
-                  ? "scrol flex-row items-stretch gap-x-6"
+                  ? "scrol flex-row items-stretch gap-x-6 ml-9"
                   : "scrol gap-x-6 px-8 overflow-x-auto scrollbar-hide"
               }`}
             >

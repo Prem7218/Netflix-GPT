@@ -86,6 +86,7 @@
 // Super Update:
 import React, { useEffect, useRef } from "react";
 import { useMovieBackground } from "../../Custom_Hooks/useMovieBackground";
+import { YOUTUBE_URL } from "../../utils/url";
 
 const VideoBackground = ({ id, onEnded }) => {
   const trailerKey = useMovieBackground(id); // Fetch trailer key from custom hook
@@ -121,7 +122,7 @@ const VideoBackground = ({ id, onEnded }) => {
     // Load YouTube Iframe API script if not already loaded
     if (!window.YT || !window.YT.Player) {
       const script = document.createElement("script");
-      script.src = "https://www.youtube.com/iframe_api";
+      script.src = `${YOUTUBE_URL}`;
       document.body.appendChild(script);
 
       window.onYouTubeIframeAPIReady = initializeYouTubePlayer;

@@ -32,6 +32,10 @@
 - Implement Feature to get Select Want Movie Trailer and Run As User/Our Wish.
 - fetch new Movie's List [ now_playing, popular, upcoming, top_rated ] & add this in Reduc Store.
 - Update Movie Slicde add some new reducer function to add diff List by diff one & in diff space. 
+- add Movie List </SecondData>
+- GPT Search --> </GPTSeach> With Multi-Language Changer
+
+
 
 # Feature's: 
 @@@ Login / Sing up

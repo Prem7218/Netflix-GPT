@@ -8,6 +8,7 @@ const moviesSlice = createSlice({
         nowPlayingTopMovie: null,
         nowPlayingUpcMovie: null,
         nowVideoTrailer: null,
+        nowGptSearchMovie: null,
         nowNextVideoTrailerList: [],
     },
     reducers: {
@@ -26,6 +27,9 @@ const moviesSlice = createSlice({
         addTrailerVideo: (state, action) => {
             state.nowVideoTrailer = action.payload;
         },
+        addGptSearchMovie: (state, action) => {
+            state.nowGptSearchMovie = action.payload;
+        },
         addNextClickViewIndex: (state, action) => {
             const findindex = state.nowNextVideoTrailerList.findIndex((item) => item === action.payload);
             
@@ -43,7 +47,7 @@ const moviesSlice = createSlice({
     }
 });
 
-export const { addNowPlayingMovies, addTrailerVideo, addNextClickViewIndex, 
+export const { addNowPlayingMovies, addTrailerVideo, addNextClickViewIndex, addGptSearchMovie, 
                removeSelectIndex  , addPopPlayingMovies, addTopPlayingMovies, addUpcPlayingMovies
              } = moviesSlice.actions;
 export default moviesSlice.reducer; 
