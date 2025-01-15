@@ -1,5 +1,5 @@
 export const SEARCH_TEXT = "Work like movie recommandation system & give top 5 movie on topic only name's in comma seprated list:";
-const herocu = "https://cors-anywhere.herokuapp.com/";
+export const herocu = "https://cors-anywhere.herokuapp.com/";
 const tmdb   = "https://api.themoviedb.org/3/"
 
 export const LOGO =

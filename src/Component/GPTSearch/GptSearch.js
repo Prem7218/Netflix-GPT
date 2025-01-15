@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BANNER, GEMINI_API_KEY, options1, SEARCH_TEXT, TMDB_URL } from '../../utils/url';
+import { BANNER, GEMINI_API_KEY, herocu, options1, SEARCH_TEXT, TMDB_URL } from '../../utils/url';
 import langOption from "./LangPack.json"
 // import { OPEN_AI_Client } from './utils/OPEN_AI_Client';
 import axios from 'axios';
@@ -56,7 +56,7 @@ const GptSearch = () => {
 
   const fetchSearchMovie =async (movie) => {
     try {
-        const response = await fetch("https://thingproxy.freeboard.io/fetch/" + TMDB_URL + `${movie}&include_adult=false&language=en-US&page=1`, options1);
+        const response = await fetch((herocu || "https://thingproxy.freeboard.io/fetch/") + TMDB_URL + `${movie}&include_adult=false&language=en-US&page=1`, options1);
 
         const data =await response.json();
         return data?.results || [];
