@@ -37,7 +37,7 @@
 - Update Movie Slicde add some new reducer function to add diff List by diff one & in diff space. 
 - add Movie List </SecondData>
 - GPT Search --> </GPTSeach> With Multi-Language Changer
-
+- Gemini & CHAT-GPT API add & get Movie Recommandation On Search. </GPTSearch>
 
 
 # Feature's: 
