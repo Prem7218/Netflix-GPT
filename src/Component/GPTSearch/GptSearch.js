@@ -29,7 +29,9 @@ const GptSearch = () => {
       const result = await model.generateContent(prompt);
       const responceText = result.response.text().split(",").map((item) => item.trim());
       setMovieArray(responceText);
-      console.log("Text: ", movieArray)
+      console.log("Text: ", movieArray);
+      const promise =await fetchSearchMovie(responceText[0]);
+      console.log("Found: ", promise);
       // const promiseArray =movieArray.map((movie) => fetchSearchMovie(movie));
       // const finalPromiseResult =await Promise.all(promiseArray);
       // console.log(finalPromiseResult);
@@ -54,8 +56,8 @@ const GptSearch = () => {
 
   const fetchSearchMovie =async (movie) => {
     try {
-        console.log("| Movie: ", movie);
-        const response = await fetch(TMDB_URL + `${movie}&include_adult=false&language=en-US&page=1`, options1);
+        const response = await fetch("https://thingproxy.freeboard.io/fetch/" + TMDB_URL + `${movie}&include_adult=false&language=en-US&page=1`, options1);
+
         const data =await response.json();
         return data?.results || [];
     } catch (e) {

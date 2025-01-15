@@ -1,5 +1,8 @@
 # Nexflix GPT
 
+[ npm outdated & npm upgrad ]
+[ npm uninstall <package-name> && npm install <package-name> ]
+
 - Create React App
 - Configuration of Tailwindcss
 - Header
