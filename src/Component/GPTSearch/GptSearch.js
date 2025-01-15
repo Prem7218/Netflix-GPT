@@ -29,7 +29,7 @@ const GptSearch = () => {
       const result = await model.generateContent(prompt);
       const responceText = result.response.text().split(",").map((item) => item.trim());
       setMovieArray(responceText);
-      console.log("Text: ", movieArray);
+      console.log("Text: ", movieArray)
       // const promiseArray =movieArray.map((movie) => fetchSearchMovie(movie));
       // const finalPromiseResult =await Promise.all(promiseArray);
       // console.log(finalPromiseResult);
