@@ -9,7 +9,7 @@ const MovieList = ({ movies }) => {
   ];
 
   return (
-    <div className="bg-gradient-to-r from-gray-900 via-black to-gray-900 py-3">
+    <div className="bg-gradient-to-r from-gray-900 via-black to-gray-900 py-3 shadoww">
       {categories.map(({ title, movieList }, categoryIndex) => {
         // Check if the movie list for the current category exists and is not empty
         if (!movieList || movieList.length === 0) return null;

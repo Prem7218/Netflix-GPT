@@ -9,6 +9,7 @@ const moviesSlice = createSlice({
         nowPlayingUpcMovie: null,
         nowVideoTrailer: null,
         nowGptSearchMovie: null,
+        nowSearchMovie: [],
         nowNextVideoTrailerList: [],
     },
     reducers: {
@@ -28,7 +29,9 @@ const moviesSlice = createSlice({
             state.nowVideoTrailer = action.payload;
         },
         addGptSearchMovie: (state, action) => {
-            state.nowGptSearchMovie = action.payload;
+            const { SearchMovies, SearchedMovies } = action.payload;
+            state.nowSearchMovie    = SearchMovies; 
+            state.nowGptSearchMovie = SearchedMovies;
         },
         addNextClickViewIndex: (state, action) => {
             const findindex = state.nowNextVideoTrailerList.findIndex((item) => item === action.payload);

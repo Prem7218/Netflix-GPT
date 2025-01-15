@@ -9,6 +9,7 @@ import MainComponent from "./MoviesData/MainComponent";
 import SecondData from "./ScondPartMovieList/SecondData";
 import GptSearch from "./GPTSearch/GptSearch";
 import { checkClickView } from "../utils/Slices/gptSlice";
+import SearchMoviePoster from "./GPTSearch/SearchMoviePoster";
 
 const Browse = () => {
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ const Browse = () => {
         </button>
       </div>
 
-      {checkGptClick ? <GptSearch /> : <MainComponent /> }
+      {checkGptClick ? <><GptSearch /><SearchMoviePoster /></> : <MainComponent /> }
       <SecondData />
     </>
   );

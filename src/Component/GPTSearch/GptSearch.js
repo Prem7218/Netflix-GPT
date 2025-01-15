@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { BANNER, GEMINI_API_KEY, herocu, options1, SEARCH_TEXT, TMDB_URL } from '../../utils/url';
 import langOption from "./LangPack.json"
 // import { OPEN_AI_Client } from './utils/OPEN_AI_Client';
-import axios from 'axios';
+// import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addGptSearchMovie } from '../../utils/Slices/useMoviesSlice';
+import { Shimmer } from './utils/Shimmer';
 // Import the SDK
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
@@ -30,12 +31,10 @@ const GptSearch = () => {
       const responceText = result.response.text().split(",").map((item) => item.trim());
       setMovieArray(responceText);
       console.log("Text: ", movieArray);
-      const promise =await fetchSearchMovie(responceText[0]);
-      console.log("Found: ", promise);
-      // const promiseArray =movieArray.map((movie) => fetchSearchMovie(movie));
-      // const finalPromiseResult =await Promise.all(promiseArray);
-      // console.log(finalPromiseResult);
-
+      const promiseArray =movieArray.map((movie) => fetchSearchMovie(movie));
+      const finalPromiseResult =await Promise.all(promiseArray);
+      dispatch(addGptSearchMovie({SearchMovies: movieArray, SearchedMovies: finalPromiseResult}));
+      console.log("MOVIE_SEARCH: ", {movieArray, finalPromiseResult});
     } catch (error) {
       console.error('Error:', error.response ? error.response.data : error.message);
     }
@@ -65,7 +64,7 @@ const GptSearch = () => {
         return [];
     }
 }
-
+ 
   const handleLangOptionChange = (event) => {
     const selectedLangCode = event.target.value; // Get selected value
     const selectedLang = langOption.lang.find(

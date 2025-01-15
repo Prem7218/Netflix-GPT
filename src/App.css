@@ -5,3 +5,7 @@
 .scrol::-webkit-scrollbar {
     display: none;
 }
+
+.shadoww {
+    box-shadow: 10px 0 0 0 rgba(0, 0, 0, 0.3);
+}
