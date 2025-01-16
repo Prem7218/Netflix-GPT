@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Header from "./Header";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
@@ -10,16 +10,22 @@ import SecondData from "./ScondPartMovieList/SecondData";
 import GptSearch from "./GPTSearch/GptSearch";
 import { checkClickView } from "../utils/Slices/gptSlice";
 import SearchMoviePoster from "./GPTSearch/SearchMoviePoster";
+// import { Shimmer } from "./GPTSearch/utils/Shimmer";
+import LoadNewMovie from "../LoadingMovie/LoadNewMovie";
+
+// const LoadNewMovie = lazy(() => import("../LoadingMovie/LoadNewMovie"));
 
 const Browse = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
   const checkGptClick = useSelector((store) => store.gpt?.checkView);
+
   const movieData       = useFetchMovieData("now_playing");
   const moviePopularMov = useFetchMovieData("popular");
   const movieTopMov     = useFetchMovieData("top_rated");
   const movieUpcMov     = useFetchMovieData("upcoming");
+
   if(!movieData || !moviePopularMov || !movieTopMov || !movieUpcMov) return null;
 
   const handleSignOut = () => {
@@ -60,8 +66,19 @@ const Browse = () => {
         </button>
       </div>
 
-      {checkGptClick ? <><GptSearch /><SearchMoviePoster /></> : <MainComponent /> }
+      {checkGptClick ? 
+        <>
+          <GptSearch />
+          <SearchMoviePoster />
+        </> 
+        : <MainComponent /> 
+      }
+      
       <SecondData />
+      
+      {/* <Suspense fallback={<Shimmer />}> */}
+        <LoadNewMovie />
+      {/* </Suspense> */}
     </>
   );
 };

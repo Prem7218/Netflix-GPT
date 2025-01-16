@@ -1,6 +1,8 @@
 export const SEARCH_TEXT = "Work like movie recommandation system & give top 5 movie on topic only name's in comma seprated list:";
-export const herocu = "https://cors-anywhere.herokuapp.com/";
-const tmdb   = "https://api.themoviedb.org/3/"
+export const herocu      = "https://cors-anywhere.herokuapp.com/";
+export const thinkproxy  = "https://thingproxy.freeboard.io/fetch/";
+export const tmdb        = "https://api.themoviedb.org/3/"
+export const loadings    = "/movie/day?language=en-US"; 
 
 export const LOGO =
   "https://i.ibb.co/c86JgHx/Blue-Red-and-Yellow-Gradient-Influencer-Celebrating-Follower-Count-Instagram-Post-1.png";
@@ -28,6 +30,7 @@ export const options = {
 };
 
 export const TMDB_URL = `${tmdb}search/movie?query=`;
+export const TMDB_URL2= "&include_adult=false&language=en-US&page=1";
 export const options1 = {
   method: 'GET',
   headers: {

@@ -17,7 +17,7 @@ const MovieList = ({ movies }) => {
         return (
           <div key={categoryIndex} className="mb-8">
             {/* Category Title */}
-            <h1 className="mt-5 mb-5 w-[16.64%] p-2 text-center font-bold text-[1.8rem] hover:bg-red-700 rounded-md text-white bg-gray-400 ml-12">
+            <h1 className="mt-5 mb-5 w-[16.64%] p-2 text-center font-bold md:text-[95%] lg:text-[190%] hover:bg-red-700 rounded-md text-white bg-gray-400 ml-12">
               {title}
             </h1>
             {/* Horizontal Scrollable Container */}

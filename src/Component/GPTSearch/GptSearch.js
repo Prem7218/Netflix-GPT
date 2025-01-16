@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { BANNER, GEMINI_API_KEY, herocu, options1, SEARCH_TEXT, TMDB_URL } from '../../utils/url';
+import { BANNER, GEMINI_API_KEY, herocu, options1, SEARCH_TEXT, thinkproxy, TMDB_URL, TMDB_URL2 } from '../../utils/url';
 import langOption from "./LangPack.json"
 // import { OPEN_AI_Client } from './utils/OPEN_AI_Client';
 // import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addGptSearchMovie } from '../../utils/Slices/useMoviesSlice';
-import { Shimmer } from './utils/Shimmer';
 // Import the SDK
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
@@ -30,11 +29,9 @@ const GptSearch = () => {
       const result = await model.generateContent(prompt);
       const responceText = result.response.text().split(",").map((item) => item.trim());
       setMovieArray(responceText);
-      console.log("Text: ", movieArray);
       const promiseArray =movieArray.map((movie) => fetchSearchMovie(movie));
       const finalPromiseResult =await Promise.all(promiseArray);
       dispatch(addGptSearchMovie({SearchMovies: movieArray, SearchedMovies: finalPromiseResult}));
-      console.log("MOVIE_SEARCH: ", {movieArray, finalPromiseResult});
     } catch (error) {
       console.error('Error:', error.response ? error.response.data : error.message);
     }
@@ -55,7 +52,7 @@ const GptSearch = () => {
 
   const fetchSearchMovie =async (movie) => {
     try {
-        const response = await fetch((herocu || "https://thingproxy.freeboard.io/fetch/") + TMDB_URL + `${movie}&include_adult=false&language=en-US&page=1`, options1);
+        const response = await fetch((herocu || thinkproxy) + TMDB_URL + movie + TMDB_URL2, options1);
 
         const data =await response.json();
         return data?.results || [];
@@ -63,7 +60,7 @@ const GptSearch = () => {
         console.log("Error is Coming: ",e);
         return [];
     }
-}
+  }
  
   const handleLangOptionChange = (event) => {
     const selectedLangCode = event.target.value; // Get selected value

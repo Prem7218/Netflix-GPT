@@ -9,3 +9,17 @@
 .shadoww {
     box-shadow: 10px 0 0 0 rgba(0, 0, 0, 0.3);
 }
+
+.tab-button {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .tab-content {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+  
