@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useFetchLoading } from "../Custom_Hooks/useFetchLoading";
-// import LoadedMovieData from "./LoadedMovieCard";
+import LoadedMovieData from "./LoadedMovieCard";
 
 const LoadNewMovie = () => {
   const [loadMovie, setLoadMovies] = useState(null);
@@ -15,15 +15,15 @@ const LoadNewMovie = () => {
   ];
 
   useEffect(() => {
-    console.log("currIndex: ", currentIndex, " \n Movie: ", loadData);
+    // console.log("currIndex: ", currentIndex, " \n Movie: ", loadData);
     const handleScroll = () => {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
         if (currentIndex < allloadingData.length) {
           // Set the category to fetch based on currentIndex
           setLoadMovies(allloadingData[currentIndex]);
-          setCurrentIndex(currentIndex + 1); // Move to the next category after data fetch
+          // setCurrentIndex(currentIndex + 1); // Move to the next category after data fetch
         } else {
-          // Reset currentIndex after all categories are loaded
+        //   // Reset currentIndex after all categories are loaded
           setCurrentIndex(0);
         }
       }
@@ -36,7 +36,7 @@ const LoadNewMovie = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [currentIndex]); // Dependency only on currentIndex
+  }, [currentIndex, loadData]); // Dependency only on currentIndex
 
   return (
     <div className="px-8 mt-8 mb-28">
@@ -46,13 +46,13 @@ const LoadNewMovie = () => {
           loadData.map((movie) => {
             const { id, original_title, poster_path } = movie;
             return (
-              console.log("")
-              // <LoadedMovieData
-              //   key={id}
-              //   id={id}
-              //   original_title={original_title}
-              //   poster_path={poster_path}
-              // />
+              // console.log("")
+              <LoadedMovieData
+                key={id}
+                id={id}
+                original_title={original_title}
+                poster_path={poster_path}
+              />
             );
           })
         ) : (
