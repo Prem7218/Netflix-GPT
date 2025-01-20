@@ -1,8 +1,11 @@
 export const SEARCH_TEXT = "Work like movie recommandation system & give top 5 movie on topic only name's in comma seprated list:";
 export const herocu      = "https://cors-anywhere.herokuapp.com/";
 export const thinkproxy  = "https://thingproxy.freeboard.io/fetch/";
-export const tmdb        = "https://api.themoviedb.org/3/"
-export const loadings    = "/movie/day?language=en-US"; 
+export const tmdb        = `https://api.themoviedb.org/3/`
+export const loadings    = "/movie/day?language=en-US";
+export const load1       = "?language=en-US&page=1"; 
+export const proxy       = (thinkproxy || herocu);
+export const lastOne     = (load1);
 
 export const LOGO =
   "https://i.ibb.co/c86JgHx/Blue-Red-and-Yellow-Gradient-Influencer-Celebrating-Follower-Count-Instagram-Post-1.png";
@@ -14,7 +17,7 @@ export const USERICON = "https://avatars.githubusercontent.com/u/161498035?v=4";
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 
-export let movieURLs = `${herocu}${tmdb}movie/`;
+export let movieURLs = `${proxy}${tmdb}movie/`;
 const TMDB_API_KEY = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZjllY2Q2MGU3Njk4ZDJjOGNhODZkYmE5NDUzMWY4YSIsIm5iZiI6MTczNjU3MzY4NS4wNzYsInN1YiI6IjY3ODIwMmY1NjA1NjU4NmY2YzRlNmFmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Z5atKawG4OpKny2Z-Q6e76pZTRssvM0Ago49YO3CHUM";
 
 export const YOUTUBE_URL = "https://www.youtube.com/iframe_api";

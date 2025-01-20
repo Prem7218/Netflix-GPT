@@ -10,14 +10,15 @@ import SecondData from "./ScondPartMovieList/SecondData";
 import GptSearch from "./GPTSearch/GptSearch";
 import { checkClickView } from "../utils/Slices/gptSlice";
 import SearchMoviePoster from "./GPTSearch/SearchMoviePoster";
-// import { Shimmer } from "./GPTSearch/utils/Shimmer";
-import LoadNewMovie from "../LoadingMovie/LoadNewMovie";
+import { Shimmer } from "./GPTSearch/utils/Shimmer";
+// import LoadNewMovie from "../LoadingMovie/LoadNewMovie";
 
-// const LoadNewMovie = lazy(() => import("../LoadingMovie/LoadNewMovie"));
+const LoadNewMovie = lazy(() => import("../LoadingMovie/LoadNewMovie"));
 
 const Browse = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const num = -1;
   const user = useSelector((store) => store.user);
   const checkGptClick = useSelector((store) => store.gpt?.checkView);
 
@@ -74,11 +75,14 @@ const Browse = () => {
         : <MainComponent /> 
       }
       
-      <SecondData />
+      <SecondData checkGptClick={checkGptClick} />
       
-      {/* <Suspense fallback={<Shimmer />}> */}
-        <LoadNewMovie />
-      {/* </Suspense> */}
+      {checkGptClick ? 
+        <Suspense fallback={<Shimmer />}>
+          <LoadNewMovie key={num + 1} />
+        </Suspense>
+        : ""
+      }
     </>
   );
 };

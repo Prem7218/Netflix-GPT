@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BANNER, GEMINI_API_KEY, herocu, options1, SEARCH_TEXT, thinkproxy, TMDB_URL, TMDB_URL2 } from '../../utils/url';
+import React, {useState} from 'react';
+import { BANNER, GEMINI_API_KEY, options1, proxy, SEARCH_TEXT, TMDB_URL, TMDB_URL2 } from '../../utils/url';
 import langOption from "./LangPack.json"
 // import { OPEN_AI_Client } from './utils/OPEN_AI_Client';
 // import axios from 'axios';
@@ -14,28 +14,41 @@ const GptSearch = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [search, setSearch] = useState("Search");
   const [placeholder, setPlace] = useState("Search Your Favorite Movie");
-  const [movieArray, setMovieArray] = useState([]);
 
 // For Gemini Student's:
 
-  const handleSearch =async () => {
-    try {
-      const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-      const model = genAI.getGenerativeModel({
-        model: "gemini-1.5-flash", // Specify the model you want to use
-      });
+const handleSearch = async () => {
+  try {
+    const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+    const model = genAI.getGenerativeModel({
+      model: "gemini-1.5-flash",
+    });
 
-      const prompt = `${SEARCH_TEXT}${searchQuery}`;
-      const result = await model.generateContent(prompt);
-      const responceText = result.response.text().split(",").map((item) => item.trim());
-      setMovieArray(responceText);
-      const promiseArray =movieArray.map((movie) => fetchSearchMovie(movie));
-      const finalPromiseResult =await Promise.all(promiseArray);
-      dispatch(addGptSearchMovie({SearchMovies: movieArray, SearchedMovies: finalPromiseResult}));
-    } catch (error) {
-      console.error('Error:', error.response ? error.response.data : error.message);
+    const prompt = `${SEARCH_TEXT}${searchQuery}`;
+    const result = await model.generateContent(prompt);
+
+    const responseText = result?.response?.text?.() || "";
+    let movieArray1 = responseText.split(",").map((item) => item.trim());
+
+    if(!movieArray1.length) {
+      movieArray1 = ["Puspa", "RRR", "Puspa 2", "Marvel", "Motion"];
     }
+
+    const promiseArray = movieArray1.map((movie) => fetchSearchMovie(movie));
+    let finalPromiseResult = await Promise.all(promiseArray);
+    console.log("Movies1: ",finalPromiseResult);
+
+    dispatch(
+      addGptSearchMovie({
+        SearchMovies: movieArray1,
+        SearchedMovies: finalPromiseResult,
+      })
+    );
+  } catch (error) {
+    console.error("Error:", error.response ? error.response.data : error.message);
   }
+};
+
 
 // For Chat GPT Student's: 
 
@@ -52,10 +65,10 @@ const GptSearch = () => {
 
   const fetchSearchMovie =async (movie) => {
     try {
-        const response = await fetch((herocu || thinkproxy) + TMDB_URL + movie + TMDB_URL2, options1);
-
-        const data =await response.json();
-        return data?.results || [];
+        const response = await fetch(proxy + TMDB_URL + movie + TMDB_URL2, options1);
+        const data   = await response.json();
+        const result = await data?.results;
+        return result || [];
     } catch (e) {
         console.log("Error is Coming: ",e);
         return [];
@@ -78,11 +91,11 @@ const GptSearch = () => {
     <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-start relative"
         style={{ backgroundImage: `url(${BANNER})`}}
     >
-        <h1 className="text-2xl text-white font-bold mb-4 top-[6rem] relative z-30">GPT Search</h1>
+        <h1 className="text-2xl text-white font-bold mb-4 top-[5.2rem] relative z-30">GPT Search</h1>
         
         <form
             onSubmit={(e) => e.preventDefault()}
-            className="flex items-center w-[60%] bg-white shadow-md rounded-lg overflow-hidden top-[6rem] relative z-30"
+            className="flex items-center w-[60%] bg-white shadow-md rounded-lg overflow-hidden top-[5.2rem] relative z-30"
         >
         {/* Language Dropdown */}
         <select

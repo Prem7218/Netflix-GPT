@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IMG_CDN_URL } from '../utils/url';
 import { useMovieBackground } from '../Custom_Hooks/useMovieBackground';
 
-const LoadedMovieData = ({ id, poster_path, original_title }) => {
+const LoadedMovieData = ({ id, poster_path, original_title, original_name }) => {
 
     const trailerId = useMovieBackground(id);
     const [hoveredMovieId, setHoveredMovieId] = useState(null);
@@ -25,17 +25,17 @@ const LoadedMovieData = ({ id, poster_path, original_title }) => {
           allowFullScreen
         />
       ) : (
-        <img 
-          src={IMG_CDN_URL + poster_path} 
-          alt={original_title} 
-          className="w-full h-full object-cover"
-        />
+        <div>
+          <img 
+            src={IMG_CDN_URL + poster_path} 
+            alt={original_title} 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-center py-2">
+            {original_title ? original_title : original_name}
+          </div>
+        </div>
       )}
-
-      {/* Movie Title */}
-      <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-center py-2">
-        {original_title}
-      </div>
     </div>
   );
 };

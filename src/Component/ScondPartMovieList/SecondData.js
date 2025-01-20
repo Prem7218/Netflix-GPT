@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import MovieList from './MovieList';
 
-const SecondData = () => {
+const SecondData = ({checkGptClick}) => {
   const movies = useSelector((store) => store.movies);
 
   return (
@@ -15,7 +15,7 @@ const SecondData = () => {
             movTop : movies?.nowPlayingTopMovie,
             movUpc : movies?.nowPlayingUpcMovie,
           }
-        } 
+        } checkGptClick={checkGptClick} 
       />
     </div>
   )

@@ -30,7 +30,7 @@ const MainComponent = () => {
   };
 
   return (
-    <div className="relative w-full h-screen bg-black overflow-hidden">
+    <div className="relative w-full lg:h-screen md:h-[600px] bg-black overflow-hidden">
       <VideoBackground id={id} onEnded={handleNextMovie} />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black">
         <VideoData title={original_title} overview={overview} />
