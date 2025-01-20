@@ -4,7 +4,7 @@ export const thinkproxy  = "https://thingproxy.freeboard.io/fetch/";
 export const tmdb        = `https://api.themoviedb.org/3/`
 export const loadings    = "/movie/day?language=en-US";
 export const load1       = "?language=en-US&page=1"; 
-export const proxy       = (thinkproxy || herocu);
+export const proxy       = (herocu || thinkproxy);
 export const lastOne     = (load1);
 
 export const LOGO =
