@@ -41,9 +41,9 @@ const SearchMoviePoster = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="absolute top-[32%] z-30 container mx-auto px-4">
+      <div className="absolute top-[30%] z-30 container mx-auto px-4">
         {/* Display Movie Posters */}
-        <div className="scrol h-[490px] overflow-y-auto">
+        <div className="scrol h-[495px] overflow-y-auto">
           {!gptSearchMovies.length  ? (
             ""
           ) : (
