@@ -89,6 +89,7 @@ import { useMovieBackground } from "../../Custom_Hooks/useMovieBackground";
 import { YOUTUBE_URL } from "../../utils/url";
 
 const VideoBackground = ({ id, onEnded }) => {
+  if(!id) { id="oelsxH0orHI" }
   const trailerKey = useMovieBackground(id); // Fetch trailer key from custom hook
   const iframeRef = useRef(null);
   const playerRef = useRef(null);
@@ -99,7 +100,7 @@ const VideoBackground = ({ id, onEnded }) => {
     const initializeYouTubePlayer = () => {
       if (playerRef.current) return; // Prevent re-initialization
       playerRef.current = new window.YT.Player(iframeRef.current, {
-        videoId: trailerKey,
+        videoId: trailerKey || id,
         playerVars: {
           autoplay: 1,
           controls: 0,

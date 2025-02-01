@@ -36,7 +36,6 @@ const handleSearch = async () => {
 
     const promiseArray = movieArray1.map((movie) => fetchSearchMovie(movie));
     let finalPromiseResult = await Promise.all(promiseArray);
-    console.log("Movies1: ",finalPromiseResult);
 
     dispatch(
       addGptSearchMovie({

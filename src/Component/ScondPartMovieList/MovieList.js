@@ -4,7 +4,6 @@ import "../../App.css";
 import DiffMovieList from './DiffMovieList';
 
 const MovieList = ({ movies, checkGptClick }) => {
-  console.log("View: ", checkGptClick)
   const categories = [
     { title: "# Now Playing: ", movieList: movies?.movNow },
   ];
